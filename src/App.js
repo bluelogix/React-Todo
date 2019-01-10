@@ -2,7 +2,9 @@ import React from 'react';
 
 import TodoList from './components/TodoComponents/TodoList'
 import TodoForm from './components/TodoComponents/TodoForm'
-// import Todo from './components/TodoComponents/Todo'
+import Todo from './components/TodoComponents/Todo'
+
+import './App.css'
 
 
 // Buffer Todo list 
@@ -21,15 +23,51 @@ class App extends React.Component {
 
     this.state = {
      data: listData,
+     task: ''
 
     }
   }
+
+  handleChanges = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
   
+  addNewTodo = e => {
+    e.preventDefault();
+    this.setState({
+      data: [
+        ...this.state.data,
+        { task: this.state.task }
+      ],
+      task: ''
+    });
+  };
+
+  // clearAll = e => {
+  //   this.setState({ 
+
+  //     task: []
+  //   });
+  // };
+  
+
   render() {
     return (
-      <div>
+      <div className="todoList">
+        <div>
         <TodoList dataInformation={this.state.data} />
-        <TodoForm />
+        </div>
+
+        <div className="todoForm">
+        <TodoForm 
+        addNewTodo={this.addNewTodo}
+        handleChanges={this.handleChanges}
+        // clearAll={this.clearAll}
+        task={this.state.task}
+        />
+        </div>
+
+        {/* <Todo /> */}
       </div>
     );
   }
