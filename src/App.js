@@ -81,7 +81,6 @@ class App extends React.Component {
           <TodoForm 
           addNewTodo={this.addNewTodo}
           handleChanges={this.handleChanges}
-          // clearAll={this.clearAll}
           task={this.state.task}
           clearCompleted={this.clearCompleted}
           />
@@ -91,7 +90,7 @@ class App extends React.Component {
           <TodoList toggleCompleted ={this.toggleCompleted } dataInformation={this.state.data} />
           </div>
 
-        <p>Follow Us: </p>
+        {/* <p>Follow Us: </p> */}
           <div className="footer">
             <i class="fab fa-facebook-f"></i>
             <i class="fab fa-twitter"></i>

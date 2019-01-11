@@ -6,7 +6,7 @@ function Todo(props) {
     return (
       
             <p className={'task.completed' ? 'completed' : null }
-            style={{ textDecoration: props.task.completed ? 'line-through' : '' }}
+            style={{ textDecorationLine: props.task.completed ? 'line-through' : '' }}
              onClick={e => props.toggleCompleted(props.task.id)}>{props.task.task}</p>
            
     

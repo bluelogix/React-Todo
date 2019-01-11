@@ -26,6 +26,10 @@ input {
 }
 
 button:focus {outline:0;}
+button:hover{
+    background: #FF6347;
+    color: black;
+}
 button {
     border: 1px solid black;
     font-size: 20px;
@@ -60,19 +64,20 @@ button {
 
 /****************** Footer **************/
 
-p {
+/* p {
     font-size: 30px;
     text-align: center;
-}
+} */
 
 .footer {
     display: flex; 
      font-size: 25px;
-    padding-left: 43.2rem;
-    
+    /* padding-left: 43.2rem; */
+    align-content: center;
     width: 11%; 
     justify-content: space-around; 
-    padding-bottom: 20px; 
+   
+    padding: 30px 0; 
 }
 
  
@@ -81,7 +86,7 @@ i:hover {
     color: #5296a3;
 }
 
-
-style{
-    color: orange;
+.completed {
+/* text-decoration-line: line-through; */
+text-decoration-color: #FF6347;
 }
