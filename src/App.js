@@ -2,17 +2,19 @@ import React from 'react';
 
 import TodoList from './components/TodoComponents/TodoList'
 import TodoForm from './components/TodoComponents/TodoForm'
-import Todo from './components/TodoComponents/Todo'
+// import Todo from './components/TodoComponents/Todo'
 
 import './App.css'
+
+
 
 
 // Buffer Todo list 
 
 const listData= [
-  { task: 'Laundry' , id: 1 , completed: false },
-  { task: 'Clean Kitchen', id: 2 , completed: false },
-  { task: 'Work on Plants', id: 3 , completed: false}
+  { task: 'Laundry' , id: 0, completed: false },
+  { task: 'Clean Kitchen', id: 1, completed: false },
+  { task: 'Work on Plants', id: 2 , completed: false}
  
 ];
 
@@ -37,38 +39,69 @@ class App extends React.Component {
     this.setState({
       data: [
         ...this.state.data,
-        { task: this.state.task }
+        { task: this.state.task, id: Date.now(),completed: false }
       ],
       task: ''
     });
   };
 
-  // clearAll = e => {
-  //   this.setState({ 
+  toggleCompleted = id => {
+    this.setState({
+      data: this.state.data.map(task => {
+        if(task.id === id) {
+          return {
+            ...task,
+            completed: !task.completed
+          }
+        } return task;
+      })
 
-  //     task: []
-  //   });
-  // };
+      
+    })
+  }
+
+  clearCompleted = e => {
+    e.preventDefault();
+    this.setState({
+      data: this.state.data.filter(task => !task.completed)
+    });
+  };
+  
   
 
   render() {
     return (
       <div className="todoList">
-        <div>
-        <TodoList dataInformation={this.state.data} />
-        </div>
 
-        <div className="todoForm">
-        <TodoForm 
-        addNewTodo={this.addNewTodo}
-        handleChanges={this.handleChanges}
-        // clearAll={this.clearAll}
-        task={this.state.task}
-        />
-        </div>
-
-        {/* <Todo /> */}
+      <div>
+      
+      <h2>Welcome to OnTask <i class="fas fa-check-double"></i></h2>
       </div>
+      <div className="formList">
+          <TodoForm 
+          addNewTodo={this.addNewTodo}
+          handleChanges={this.handleChanges}
+          // clearAll={this.clearAll}
+          task={this.state.task}
+          clearCompleted={this.clearCompleted}
+          />
+        </div>
+
+        <div className="dataInfo">
+          <TodoList toggleCompleted ={this.toggleCompleted } dataInformation={this.state.data} />
+          </div>
+
+        <p>Follow Us: </p>
+          <div className="footer">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-instagram"></i>
+          </div>
+
+        
+
+  
+      </div> //todoList
     );
   }
 }
