@@ -1,0 +1,18 @@
+
+
+/* .todoForm {
+    height: 60px;
+    width: 500;
+} */
+
+.todoList { 
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    border-radius: 40px;
+    font-size: 50px;
+    border: 3px solid Black;
+    background: rgb(255, 251, 249);
+     display: flex;
+    flex-direction: column;
+    justify-content: center;  
+    /* background-color: (#9a011c, slategray); */
+ }
